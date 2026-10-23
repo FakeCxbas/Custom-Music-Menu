@@ -1,6 +1,6 @@
 # Custom Menu Music
 
-A simple mod for Geometry Dash that lets you choose any custom song (.mp3, .ogg, .wav) to play on the main menu.
+A mod for GD that lets you choose any custom song (.mp3, .ogg, .wav) to play on the main menu.
 
 ## Features
 
@@ -16,6 +16,7 @@ A simple mod for Geometry Dash that lets you choose any custom song (.mp3, .ogg,
 1. Click the music note button on the bottom bar of the main menu (or open Geode -> Mods -> Custom Menu Music -> Settings).
 2. Browse and select your audio file.
 3. The song will start playing right away.
+4. Enjoy! :D
 
 ## Credits
 
