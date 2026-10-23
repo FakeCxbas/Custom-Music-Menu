@@ -1,0 +1,75 @@
+{
+	"geode": "5.11.2",
+	"gd": {
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
+	},
+	"id": "fakecxbas.custom_menu_music",
+	"name": "Custom Menu Music",
+	"version": "v1.0.0",
+	"developer": "fakecxbas",
+	"description": "Play any custom song (.mp3, .ogg, .wav) on the main menu with texture pack support and multi-language.",
+	"repository": "https://github.com/fakecxbas/custom-menu-music",
+	"tags": [
+		"music",
+		"customization",
+		"utility"
+	],
+	"dependencies": {
+		"geode.node-ids": ">=v1.23.3"
+	},
+	"settings": {
+		"enabled": {
+			"name": "Enabled / Activado",
+			"description": "Enable or disable custom menu music. / Activa o desactiva la musica personalizada.",
+			"type": "bool",
+			"default": true
+		},
+		"custom-music-file": {
+			"name": "Music File / Archivo de musica",
+			"description": "Select an audio file (.mp3, .ogg, .wav) from your computer. / Selecciona un archivo de audio.",
+			"type": "file",
+			"default": "",
+			"control": {
+				"dialog": "open",
+				"filters": [
+					{
+						"description": "Audio Files (*.mp3, *.ogg, *.wav)",
+						"files": ["*.mp3", "*.ogg", "*.wav"]
+					}
+				]
+			}
+		},
+		"loop": {
+			"name": "Loop / Bucle continuo",
+			"description": "Whether the music should repeat in a loop. / Repetir la cancion en bucle indefinido.",
+			"type": "bool",
+			"default": true
+		},
+		"show-menu-button": {
+			"name": "Show Menu Button / Boton en menu",
+			"description": "Show quick access button in the main menu bottom bar. / Muestra el boton en el menu principal.",
+			"type": "bool",
+			"default": true
+		},
+		"show-notification": {
+			"name": "Song Notification / Notificacion de cancion",
+			"description": "Show a notification with the song title when it starts playing. / Notificacion al reproducir.",
+			"type": "bool",
+			"default": true
+		},
+		"language": {
+			"name": "Language / Idioma",
+			"description": "Language for in-game messages. / Idioma para los mensajes en el juego.",
+			"type": "string",
+			"default": "Auto",
+			"one-of": [
+				"Auto",
+				"English",
+				"Español"
+			]
+		}
+	}
+}
