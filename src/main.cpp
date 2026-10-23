@@ -96,33 +96,29 @@ class $modify(CustomMenuLayer, MenuLayer) {
 
         if (Mod::get()->getSettingValue<bool>("show-menu-button")) {
             if (auto bottomMenu = this->getChildByID("bottom-menu")) {
-                auto btnSpr = CircleButtonSprite::createWithSpriteFrameName(
-                    "GJ_noteIcon_001.png",
-                    0.85f,
-                    CircleBaseColor::Green,
-                    CircleBaseSize::MediumAlt
-                );
-                if (!btnSpr) {
-                    btnSpr = CircleButtonSprite::createWithSpriteFrameName(
-                        "GJ_musicIcon_001.png",
-                        0.85f,
+                CircleButtonSprite* btnSpr = nullptr;
+
+                if (auto top = CCSprite::create("menu-icon.png"_spr)) {
+                    btnSpr = CircleButtonSprite::create(
+                        top,
                         CircleBaseColor::Green,
                         CircleBaseSize::MediumAlt
                     );
                 }
+
                 if (!btnSpr) {
                     btnSpr = CircleButtonSprite::createWithSpriteFrameName(
-                        "GJ_musicOnBtn_001.png",
+                        "GJ_noteIcon_001.png",
                         0.85f,
                         CircleBaseColor::Green,
                         CircleBaseSize::MediumAlt
                     );
+                    if (btnSpr) {
+                        btnSpr->setTopOffset({ 2.0f, -3.5f });
+                    }
                 }
 
                 if (btnSpr) {
-                    // Optical centering: shift right by 2.0 and down by 3.5
-                    btnSpr->setTopOffset({ 2.0f, -3.5f });
-
                     auto btn = CCMenuItemSpriteExtra::create(
                         btnSpr, this, menu_selector(CustomMenuLayer::onCustomMenuMusicBtn)
                     );
