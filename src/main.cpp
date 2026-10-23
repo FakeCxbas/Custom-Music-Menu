@@ -97,45 +97,44 @@ class $modify(CustomMenuLayer, MenuLayer) {
 
         if (Mod::get()->getSettingValue<bool>("show-menu-button")) {
             if (auto bottomMenu = this->getChildByID("bottom-menu")) {
-                auto container = CCNode::create();
-                container->setContentSize({ 44.f, 44.f });
-                container->setAnchorPoint({ 0.5f, 0.5f });
-
-                auto noteSpr = CCSprite::createWithSpriteFrameName("GJ_noteIcon_001.png");
-                if (!noteSpr) {
-                    noteSpr = CCSprite::createWithSpriteFrameName("GJ_musicIcon_001.png");
-                }
-                if (noteSpr) {
-                    noteSpr->setScale(0.70f);
-                    noteSpr->setPosition({ 18.f, 25.f });
-                    container->addChild(noteSpr);
-                }
-
-                auto gm = GameManager::sharedState();
-                auto player = SimplePlayer::create(0);
-                if (player) {
-                    player->updatePlayerFrame(gm->getPlayerFrame(), IconType::Cube);
-                    player->setColor(gm->colorForIdx(gm->getPlayerColor()));
-                    player->setSecondColor(gm->colorForIdx(gm->getPlayerColor2()));
-                    if (gm->getPlayerGlow()) {
-                        player->enableCustomGlowColor(gm->colorForIdx(gm->getPlayerGlowColor()));
-                    } else {
-                        player->disableGlowOutline();
-                    }
-                    player->updateColors();
-                    player->setScale(0.48f);
-                    player->setRotation(-10.f);
-                    player->setPosition({ 29.f, 16.f });
-                    container->addChild(player);
-                }
-
-                auto btnSpr = CircleButtonSprite::create(
-                    container,
+                auto btnSpr = CircleButtonSprite::createWithSpriteFrameName(
+                    "GJ_noteIcon_001.png",
+                    0.92f,
                     CircleBaseColor::Green,
                     CircleBaseSize::MediumAlt
                 );
+                if (!btnSpr) {
+                    btnSpr = CircleButtonSprite::createWithSpriteFrameName(
+                        "GJ_musicIcon_001.png",
+                        0.92f,
+                        CircleBaseColor::Green,
+                        CircleBaseSize::MediumAlt
+                    );
+                }
 
                 if (btnSpr) {
+                    // Offset note slightly to top-left
+                    btnSpr->setTopOffset({ -3.0f, 2.5f });
+
+                    // Add player's active cube in the bottom right
+                    auto gm = GameManager::sharedState();
+                    auto player = SimplePlayer::create(0);
+                    if (player) {
+                        player->updatePlayerFrame(gm->getPlayerFrame(), IconType::Cube);
+                        player->setColor(gm->colorForIdx(gm->getPlayerColor()));
+                        player->setSecondColor(gm->colorForIdx(gm->getPlayerColor2()));
+                        if (gm->getPlayerGlow()) {
+                            player->enableCustomGlowColor(gm->colorForIdx(gm->getPlayerGlowColor()));
+                        } else {
+                            player->disableGlowOutline();
+                        }
+                        player->updateColors();
+                        player->setScale(0.55f);
+                        player->setRotation(-10.f);
+                        player->setPosition(btnSpr->getContentSize() / 2 + ccp(7.5f, -6.5f));
+                        btnSpr->addChild(player, 2);
+                    }
+
                     auto btn = CCMenuItemSpriteExtra::create(
                         btnSpr, this, menu_selector(CustomMenuLayer::onCustomMenuMusicBtn)
                     );
