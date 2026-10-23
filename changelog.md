@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.0.1
+* Rounded the mod logo corners
+
 ## v1.0.0
 * Initial release
 * Custom menu music support (.mp3, .ogg, .wav)
