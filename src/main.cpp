@@ -120,6 +120,9 @@ class $modify(CustomMenuLayer, MenuLayer) {
                 }
 
                 if (btnSpr) {
+                    // Optical centering: shift right by 2.0 and down by 3.5
+                    btnSpr->setTopOffset({ 2.0f, -3.5f });
+
                     auto btn = CCMenuItemSpriteExtra::create(
                         btnSpr, this, menu_selector(CustomMenuLayer::onCustomMenuMusicBtn)
                     );
