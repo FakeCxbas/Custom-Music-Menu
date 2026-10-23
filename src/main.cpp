@@ -4,6 +4,7 @@
 #include <Geode/ui/GeodeUI.hpp>
 #include <Geode/ui/BasedButtonSprite.hpp>
 #include <Geode/ui/Notification.hpp>
+#include <Geode/binding/SimplePlayer.hpp>
 
 using namespace geode::prelude;
 
@@ -96,27 +97,43 @@ class $modify(CustomMenuLayer, MenuLayer) {
 
         if (Mod::get()->getSettingValue<bool>("show-menu-button")) {
             if (auto bottomMenu = this->getChildByID("bottom-menu")) {
-                CircleButtonSprite* btnSpr = nullptr;
+                auto container = CCNode::create();
+                container->setContentSize({ 44.f, 44.f });
+                container->setAnchorPoint({ 0.5f, 0.5f });
 
-                if (auto top = CCSprite::create("menu-icon.png"_spr)) {
-                    btnSpr = CircleButtonSprite::create(
-                        top,
-                        CircleBaseColor::Green,
-                        CircleBaseSize::MediumAlt
-                    );
+                auto noteSpr = CCSprite::createWithSpriteFrameName("GJ_noteIcon_001.png");
+                if (!noteSpr) {
+                    noteSpr = CCSprite::createWithSpriteFrameName("GJ_musicIcon_001.png");
+                }
+                if (noteSpr) {
+                    noteSpr->setScale(0.70f);
+                    noteSpr->setPosition({ 18.f, 25.f });
+                    container->addChild(noteSpr);
                 }
 
-                if (!btnSpr) {
-                    btnSpr = CircleButtonSprite::createWithSpriteFrameName(
-                        "GJ_noteIcon_001.png",
-                        0.85f,
-                        CircleBaseColor::Green,
-                        CircleBaseSize::MediumAlt
-                    );
-                    if (btnSpr) {
-                        btnSpr->setTopOffset({ 2.0f, -3.5f });
+                auto gm = GameManager::sharedState();
+                auto player = SimplePlayer::create(0);
+                if (player) {
+                    player->updatePlayerFrame(gm->getPlayerFrame(), IconType::Cube);
+                    player->setColor(gm->colorForIdx(gm->getPlayerColor()));
+                    player->setSecondColor(gm->colorForIdx(gm->getPlayerColor2()));
+                    if (gm->getPlayerGlow()) {
+                        player->enableCustomGlowColor(gm->colorForIdx(gm->getPlayerGlowColor()));
+                    } else {
+                        player->disableGlowOutline();
                     }
+                    player->updateColors();
+                    player->setScale(0.48f);
+                    player->setRotation(-10.f);
+                    player->setPosition({ 29.f, 16.f });
+                    container->addChild(player);
                 }
+
+                auto btnSpr = CircleButtonSprite::create(
+                    container,
+                    CircleBaseColor::Green,
+                    CircleBaseSize::MediumAlt
+                );
 
                 if (btnSpr) {
                     auto btn = CCMenuItemSpriteExtra::create(

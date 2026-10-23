@@ -20,11 +20,6 @@
 	"dependencies": {
 		"geode.node-ids": ">=v1.23.3"
 	},
-	"resources": {
-		"files": [
-			"resources/*.png"
-		]
-	},
 	"settings": {
 		"enabled": {
 			"name": "Enabled",
