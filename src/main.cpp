@@ -124,11 +124,11 @@ class $modify(CustomMenuLayer, MenuLayer) {
                         player->setColor(gm->colorForIdx(gm->getPlayerColor()));
                         player->setSecondColor(gm->colorForIdx(gm->getPlayerColor2()));
                         if (gm->getPlayerGlow()) {
-                            player->enableCustomGlowColor(gm->colorForIdx(gm->getPlayerGlowColor()));
+                            player->setGlowOutline(gm->colorForIdx(gm->getPlayerGlowColor()));
                         } else {
                             player->disableGlowOutline();
+                            player->updateColors();
                         }
-                        player->updateColors();
                         player->setScale(0.55f);
                         player->setRotation(-10.f);
                         player->setPosition(btnSpr->getContentSize() / 2 + ccp(7.5f, -6.5f));
