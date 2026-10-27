@@ -1,5 +1,14 @@
 # Custom Menu Music
 
+<p align="left">
+  <img src="https://img.shields.io/badge/Geode_SDK-v5.11.2-purple" alt="Geode SDK" />
+  <img src="https://img.shields.io/badge/Geometry_Dash-2.2081-yellow" alt="Geometry Dash" />
+  <img src="https://img.shields.io/badge/C%2B%2B-20-00599C?logo=c%2B%2B&logoColor=white" alt="C++" />
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-84CC16.svg" alt="License" />
+  </a>
+</p>
+
 A mod for GD that lets you choose any custom song (.mp3, .ogg, .wav) to play on the main menu.
 
 ## Features
