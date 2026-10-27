@@ -18,7 +18,10 @@ A mod for GD that lets you choose any custom song (.mp3, .ogg, .wav) to play on 
 3. The song will start playing right away.
 4. Enjoy! :D
 
-## Credits
+## License & Authors
 
-- Developed by **FakeCxbas**
-- Thanks to the Geode team for the SDK
+This project is licensed under the [MIT License](LICENSE).
+
+- **Main Author:** Sebastián Zambrano ([@FakeCxbas](https://github.com/FakeCxbas))
+- **Detailed Credits:** See [AUTHORS.md](AUTHORS.md) for full project roles and framework credits.
+- **Framework:** Built with [Geode SDK](https://geode-sdk.org/) for Geometry Dash.
